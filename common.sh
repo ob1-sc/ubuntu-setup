@@ -22,6 +22,7 @@ print_header() {
 print_footer() {
 
 	repeat_char "=" $1
+	printf "\n\n"
 }
 
 run_cmd() {
@@ -36,7 +37,6 @@ run_cmd() {
 	eval $CMD
 
 	print_footer $HEADER_TEXT_LENGTH
-	printf "\n\n"
 
 	HEADER_TEXT_LENGTH=0
 }
@@ -44,29 +44,26 @@ run_cmd() {
 install_deb_pkg() {
 
 	local DEB_PKG_URL="$1"
-	local DESC="$2"
 	local FILE_NAME=package.deb
 
 	local CMD="wget $DEB_PKG_URL -O $FILE_NAME && sudo gdebi $FILE_NAME -n && rm -f -v $FILE_NAME"
 
-	run_cmd "$CMD" "$DESC"
+	eval $CMD
 }
 
 install_snap_pkg() {
 
 	local SNAP_PKG="$1"
-	local DESC="$2"
 
 	local CMD="sudo snap install $SNAP_PKG"
 	
-	run_cmd "$CMD" "$DESC"
+	eval $CMD
 }
 
 install_apt_pkg() {
 
 	local APT_PKG="$1"
-	local DESC="$2"
-	local APT_REPO="$3"
+	local APT_REPO="$2"
 
 	local CMD="sudo apt-get install $APT_PKG -y"
 
@@ -74,5 +71,5 @@ install_apt_pkg() {
 		CMD="sudo add-apt-repository $APT_REPO -y -u && $CMD"
 	fi
 
-	run_cmd "$CMD" "$DESC"
+	eval $CMD
 }

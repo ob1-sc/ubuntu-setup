@@ -1,0 +1,20 @@
+#!/bin/sh
+
+. ../common.sh
+
+# Description of install script
+HEADER_DESCRIPTION="Installing <INSERT DESCRIPTION>"
+
+# Print the install script description header
+print_header "$HEADER_DESCRIPTION"
+
+#============ Install Script Steps ============
+
+# INSERT INSTALL SCRIPT STEPS HERE
+
+#==============================================
+
+# Pring the install script footer
+print_footer $HEADER_TEXT_LENGTH
+
+exit
