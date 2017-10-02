@@ -29,8 +29,6 @@ run_cmd "sudo apt-get autoremove" "cleaning up"
 
 exit
 
-# Postman
-
 # IntelliJ
 
 # Docker CE
