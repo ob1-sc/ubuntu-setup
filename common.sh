@@ -64,14 +64,18 @@ create_launcher() {
 	echo "Type=$TYPE" >> $LAUNCHER_FILE 
 	echo "Categories=$CATEGORIES" >> $LAUNCHER_FILE 
 	
+	# ensure the ownership is correctly set
+	sudo chown root.root -R $LAUNCHER_FILE
+
 	# move the launcher to applications shortcut folder
 	sudo mv $LAUNCHER_FILE /usr/share/applications
 }
 
 install_tar_pkg() {
 
-	local TAR_PKG_URL="$1"
-	local FILE_NAME=package.tar.gz
+	local INSTALL_NAME="$1"
+	local TAR_PKG_URL="$2"
+	local FILE_NAME="$INSTALL_NAME.tar.gz"
 	local INSTALL_DIR=/opt
 
 	# download the tar
@@ -80,9 +84,6 @@ install_tar_pkg() {
 	# store the current working directory
 	local CWD=$(pwd) 
 
-	# get the name of the top level folder in the tar
-	local TAR_PKG_NAME=$(tar tfz $FILE_NAME --exclude '*/*')
-
 	# move the tar to the installation directory	
 	sudo mv $FILE_NAME $INSTALL_DIR
 	
@@ -90,19 +91,27 @@ install_tar_pkg() {
 	cd $INSTALL_DIR
 	
 	# remove the existing folder
-	sudo rm -r -f $TAR_PKG_NAME
+	sudo rm -r -f $INSTALL_NAME
+	
+	# create folder to install into
+	sudo mkdir $INSTALL_NAME
 
 	# unpack the war
-	sudo tar -xzf $FILE_NAME
+	sudo tar -xzf $FILE_NAME -C $INSTALL_NAME --strip-components=1
 
 	# ensure the ownership is correctly set
-	sudo chown root.root -R $TAR_PKG_NAME
+	sudo chown root.root -R $INSTALL_NAME
 
 	# delete the tar
 	sudo rm -f -v $FILE_NAME
 
 	# cd back to the working directory
 	cd $CWD
+	
+	# set the install folder
+	INSTALL_FOLDER="$INSTALL_DIR/$INSTALL_NAME"
+
+	echo "in common: $INSTALL_FOLDER"
 }
 
 install_deb_pkg() {

@@ -11,13 +11,14 @@ print_header "$HEADER_DESCRIPTION"
 #============ Install Script Steps ============
 
 # install the tar
-install_tar_pkg https://dl.pstmn.io/download/latest/linux64
+install_tar_pkg postman https://dl.pstmn.io/download/latest/linux64
 
 # create sym link
-sudo ln -s -f -v /opt/Postman/Postman /usr/bin/postman
+sudo ln -s -f -v $INSTALL_FOLDER/Postman /usr/bin/postman
 
 # add desktop entry
-create_launcher "Postman" "postman --disable-gpu %f" "/opt/Postman/resources/app/assets/icon.png" "Application" "Development;"
+create_launcher "Postman" "postman --disable-gpu %f" "$INSTALL_FOLDER/resources/app/assets/icon.png" "Application" "Development;"
+
 
 #==============================================
 
