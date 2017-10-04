@@ -41,6 +41,36 @@ run_cmd() {
 	HEADER_TEXT_LENGTH=0
 }
 
+add_app_to_favorites() {
+
+	local APP_NAME="$1"
+	local SHORTCUT_FILE="/usr/share/applications/$APP_NAME.desktop" 
+	
+	# get the current array of favorites
+	local FAVORITES="$(gsettings get org.gnome.shell favorite-apps)"
+
+	# check the app shortcut is valid
+	if [ -f $SHORTCUT_FILE ]
+	then
+		echo "adding app to favourites ..."	
+		
+		# strip the trailing bracket
+		FAVORITES="$(echo $FAVORITES | sed 's/.$//')"
+
+		# add the app to the array
+		FAVORITES="$FAVORITES, '$APP_NAME.desktop'"
+		
+		# close the array
+		FAVORITES="$FAVORITES]"
+
+		# set the array of favorites
+		gsettings set org.gnome.shell favorite-apps "$FAVORITES"
+		
+	else
+		echo "cannot add app shortcut as it cannot be found"
+ 	fi
+}
+
 create_launcher() {
 	
 	local NAME="$1"
