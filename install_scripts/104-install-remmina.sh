@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 . ../common.sh
 
@@ -11,6 +11,8 @@ print_header "$HEADER_DESCRIPTION"
 #============ Install Script Steps ============
 
 install_apt_pkg "remmina remmina-plugin-rdp libfreerdp-plugins-standard" "ppa:remmina-ppa-team/remmina-next"
+
+add_app_to_favorites "remmina"
 
 #==============================================
 

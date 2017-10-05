@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 . ../common.sh
 
@@ -11,6 +11,8 @@ print_header "$HEADER_DESCRIPTION"
 #============ Install Script Steps ============
 
 install_deb_pkg "https://downloads.slack-edge.com/linux_releases/slack-desktop-2.8.0-amd64.deb" 
+
+add_app_to_favorites "slack"
 
 #==============================================
 

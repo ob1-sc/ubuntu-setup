@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 . ../common.sh
 
@@ -11,6 +11,8 @@ print_header "$HEADER_DESCRIPTION"
 #============ Install Script Steps ============
 
 install_apt_pkg "tmux byobu"
+
+add_app_to_favorites "byobu"
 
 #==============================================
 

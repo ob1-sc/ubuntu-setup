@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 repeat_char() {
 	
@@ -52,20 +52,24 @@ add_app_to_favorites() {
 	# check the app shortcut is valid
 	if [ -f $SHORTCUT_FILE ]
 	then
-		echo "adding app to favourites ..."	
 		
-		# strip the trailing bracket
-		FAVORITES="$(echo $FAVORITES | sed 's/.$//')"
+		if [[ $FAVORITES != *"$APP_NAME"* ]] 
+		then
+			echo "adding app to favourites ..."	
+		
+			# strip the trailing bracket
+			FAVORITES="$(echo $FAVORITES | sed 's/.$//')"
 
-		# add the app to the array
-		FAVORITES="$FAVORITES, '$APP_NAME.desktop'"
+			# add the app to the array
+			FAVORITES="$FAVORITES, '$APP_NAME.desktop'"
 		
-		# close the array
-		FAVORITES="$FAVORITES]"
+			# close the array
+			FAVORITES="$FAVORITES]"
 
-		# set the array of favorites
-		gsettings set org.gnome.shell favorite-apps "$FAVORITES"
-		
+			# set the array of favorites
+			gsettings set org.gnome.shell favorite-apps "$FAVORITES"
+		fi
+	
 	else
 		echo "cannot add app shortcut as it cannot be found"
  	fi
@@ -140,8 +144,6 @@ install_tar_pkg() {
 	
 	# set the install folder
 	INSTALL_FOLDER="$INSTALL_DIR/$INSTALL_NAME"
-
-	echo "in common: $INSTALL_FOLDER"
 }
 
 install_deb_pkg() {

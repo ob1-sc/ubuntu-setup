@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 . ../common.sh
 
@@ -11,6 +11,8 @@ print_header "$HEADER_DESCRIPTION"
 #============ Install Script Steps ============
 
 install_snap_pkg "simplenote"
+
+add_app_to_favorites "simplenote_simplenote"
 
 #==============================================
 
