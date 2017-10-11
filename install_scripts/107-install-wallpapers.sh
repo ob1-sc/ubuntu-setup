@@ -10,7 +10,7 @@ print_header "$HEADER_DESCRIPTION"
 
 #============ Install Script Steps ============
 
-sudo apt-get install ubuntu-wallpapers*
+install_apt_pkg "ubuntu-wallpapers*"
 
 #==============================================
 
