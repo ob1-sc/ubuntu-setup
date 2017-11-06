@@ -12,8 +12,6 @@ print_header "$HEADER_DESCRIPTION"
 
 install_deb_pkg "https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb"
 
-add_app_to_favorites "google-chrome"
-
 #==============================================
 
 # Pring the install script footer

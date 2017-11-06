@@ -12,8 +12,6 @@ print_header "$HEADER_DESCRIPTION"
 
 install_snap_pkg "simplenote"
 
-add_app_to_favorites "simplenote_simplenote"
-
 #==============================================
 
 # Pring the install script footer

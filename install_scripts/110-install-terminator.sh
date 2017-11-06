@@ -3,14 +3,14 @@
 . ../common.sh
 
 # Description of install script
-HEADER_DESCRIPTION="Installing tmux & byobu"
+HEADER_DESCRIPTION="Installing Terminator"
 
 # Print the install script description header
 print_header "$HEADER_DESCRIPTION"
 
 #============ Install Script Steps ============
 
-install_apt_pkg "tmux byobu"
+install_apt_pkg "terminator"
 
 #==============================================
 

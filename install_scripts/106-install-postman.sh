@@ -19,9 +19,6 @@ sudo ln -s -f -v $INSTALL_FOLDER/Postman /usr/bin/postman
 # add desktop entry
 create_launcher "Postman" "postman --disable-gpu %f" "$INSTALL_FOLDER/resources/app/assets/icon.png" "Application" "Development;"
 
-# add as favourite
-add_app_to_favorites "postman"
-
 #==============================================
 
 # Pring the install script footer

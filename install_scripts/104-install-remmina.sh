@@ -12,8 +12,6 @@ print_header "$HEADER_DESCRIPTION"
 
 install_apt_pkg "remmina remmina-plugin-rdp libfreerdp-plugins-standard" "ppa:remmina-ppa-team/remmina-next"
 
-add_app_to_favorites "remmina"
-
 #==============================================
 
 # Pring the install script footer

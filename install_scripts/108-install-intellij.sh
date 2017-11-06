@@ -22,12 +22,6 @@ install_tar_pkg intellij-idea-ce $URL
 # create a sym link
 sudo ln -s -f -v $INSTALL_FOLDER/bin/idea.sh /usr/bin/idea
 
-# add desktop entry
-create_launcher "IntelliJ IDEA CE" "$INSTALL_FOLDER/bin/idea.sh %f" "$INSTALL_FOLDER/bin/idea.png" "Application" "Development;"
-
-# add as a favorite
-add_app_to_favorites "intellij-idea-ce"
-
 #==============================================
 
 # Pring the install script footer
