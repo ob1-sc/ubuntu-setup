@@ -164,9 +164,17 @@ install_deb_pkg() {
 install_snap_pkg() {
 
 	local SNAP_PKG="$1"
+	local CLASSIC_CONFINEMENT="$2"
+
+	# build the command
+	INSTALL_CMD="sudo snap install $SNAP_PKG"
+
+	if [[ $CLASSIC_CONFINEMENT == "true" ]]; then
+		INSTALL_CMD="$INSTALL_CMD --classic"
+	fi
 
 	# install the snap
-	sudo snap install $SNAP_PKG
+	eval $INSTALL_CMD
 }
 
 add_apt_source() {
